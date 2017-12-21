@@ -1,4 +1,6 @@
 .idea/
+.ipynb_checkpoints/
+
 **/*.txt
 **/*.pyc
 **/__pycache__/
