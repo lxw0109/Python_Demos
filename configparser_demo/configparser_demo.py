@@ -9,8 +9,8 @@ import configparser
 
 def config_write():
     config = configparser.ConfigParser()
-    config['default'] = {'ServerAliveInterval': '45', 'Compression': 'yes', 'CompressionLevel': '9'}
-    config['default']['ForwardX11'] = 'yes'
+    config['DEFAULT'] = {'ServerAliveInterval': '45', 'Compression': 'yes', 'CompressionLevel': '9'}
+    config['DEFAULT']['ForwardX11'] = 'yes'
 
     config['bitbucket.org'] = {}
     config['bitbucket.org']['User'] = 'hg'
@@ -28,11 +28,30 @@ def config_read():
     config = configparser.ConfigParser()
     print("config.sections():{}".format(config.sections()))
     config.read('example.ini')
-    print("config.sections():{}".format(config.sections()))
+    print("config.sections():{}\n".format(config.sections()))
+
+    # case-sensitive
+    # print(config["default"])    # KeyError: 'default
+    print(config["DEFAULT"])    # <Section: DEFAULT>
+    for key in config["DEFAULT"]:
+        print(key)
+    print("")
+
+    # case-sensitive
     topsecret = config['topsecret.server.com']
+    # topsecret = config['tOPSECRET.server.com']    # KeyError: 'tOPSECRET.server.com
+    # topsecret = config['TOPSECRET.SERVER.COM']    # KeyError: 'TOPSECRET.SERVER.COM
+
+    # case-insensitive
+    print(topsecret['FORWARDX11'])
+    print(topsecret['ForWARDX11'])
+    print(topsecret['FOrWaRdX11'])
+    print(topsecret['FoRWaRdx11'])
+    print(topsecret['foRwardX11'], end="\n\n")
+
+    # NOTE: including those specified in "DEFAULT".
     for key in config['bitbucket.org']:
         print(key)
-    print(config['bitbucket.org']['ForwardX11'])
 
 
 
