@@ -7,6 +7,10 @@
 
 import matplotlib.pyplot as plt
 
+# 利用ipython --pylab，可以进入PyLab模式，已经导入了matplotlib库与相关软件包（例如Numpy和Scipy)，可以直接使用相关库的功能
+
+
+
 def main():
     x = [1, 2, 3]
     y = [4, 5, 6]
