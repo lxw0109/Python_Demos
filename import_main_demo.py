@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # coding: utf-8
-# File: demo..py
+# File: demo.py
 # Author: lxw
 # Date: 11/27/17 10:46 AM
 
