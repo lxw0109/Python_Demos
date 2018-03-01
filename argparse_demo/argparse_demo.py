@@ -33,6 +33,8 @@ def optinal_args_demo():
     parser.add_argument("--square", type=int, help="display a square of a given integer")
     parser.add_argument("--cubic", type=int, help="display a cubic of a given integer")
     args = parser.parse_args()
+    print(args)     # e.g.: Namespace(cubic=10, square=None)
+    print(vars(args))    # e.g.: {'square': None, 'cubic': 10}
 
     if args.square:
         print(args.square ** 2)
