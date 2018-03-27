@@ -66,5 +66,5 @@ def draw_function():
 
 
 if __name__ == "__main__":
-    # basic_demo()
-    draw_function()
+    basic_demo()
+    # draw_function()
