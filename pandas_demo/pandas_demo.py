@@ -129,12 +129,12 @@ def ten_minutes_to_pandas():
     """
     # DataFrame.loc: Purely label-location based indexer for selection by label.
     print(df.loc[:, ["A", "E"]], "\n", "--" * 20)
-    print(df.loc["20180226":"20180228", "B":"C"], "\n", "--" * 20)
-    print(df.loc["20180226", "B"], "\n", "--" * 20)
-    # print(df.at[dates[0], "B"], "\n", "--" * 20)    # NO
+    print(df.loc["20170226":"20170228", "B":"C"], "\n", "--" * 20)
+    print(df.loc["20170226", "B"], "\n", "--" * 20)
+    print(df.at[dates[0], "B"], "\n", "--" * 20)
 
     # DataFrame.iloc: Purely integer-location based indexing for selection by position.
-    # print(df.iloc(3), "\n", "--" * 20)    # <class "pandas.core.indexing._iLocIndexer">
+    print(df.iloc(3), "\n", "--" * 20)    # <class "pandas.core.indexing._iLocIndexer">
     print(df.iloc[3], "\n", "--" * 20)    # <class "pandas.core.series.Series">
     print(df.iloc[2:5, 0:2], "\n", "--" * 20)
     print(df.iloc[[2, 3], [0, 1]], "\n", "--" * 20)
@@ -326,9 +326,11 @@ def ten_minutes_to_pandas():
     print(pd.read_hdf("foo.h5", "df_data"))    # KeyError: 'No object named dflxw in the file'
     """
 
+    """
     df.to_excel("foo.xlsx", sheet_name="Sheet1")
     # df.to_excel("foo.xlsx", sheet_name="Sheet2")    # 同一个文件的不同sheet不会追加，会把整个excel文件覆盖
     print(pd.read_excel("foo.xlsx", sheet_name="Sheet1", index_col=None, na_values=["NA"]))
+    """
 
 
 
