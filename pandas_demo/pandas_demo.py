@@ -8,6 +8,7 @@
 1. [intro_to_pandas.ipynb](https://colab.research.google.com/notebooks/mlcc/intro_to_pandas.ipynb#scrollTo=daQreKXIUslr)
 2. [十分钟搞定pandas](http://python.jobbole.com/84416/) /
 [10 Minutes to pandas](http://pandas.pydata.org/pandas-docs/stable/10min.html)
+3. [pandas如何去掉、过滤数据集中的某些值或者某些行?](https://blog.csdn.net/qq_22238533/article/details/76127966)
 """
 
 import numpy as np
@@ -49,6 +50,18 @@ def basic_demo():
     # NOTE: item 是每一列的**名字**，而不是每一列的数据，也不是每一行的数据
     # for item in cities:
     #     print(item)
+
+    # deep copy & shallow copy
+    cities_copy = cities
+    cities.loc[0, "City name"] = "lxw"
+    print(cities_copy)
+    print(cities)
+
+    cities_copy1 = cities.loc[:, :]
+    # 测试结果显示：即使使用[:, :]仍然是浅拷贝
+    cities.loc[0, "City name"] = "Hello world"
+    print(cities_copy1)
+    print(cities)
 
 
 def pandas_file():
@@ -126,8 +139,11 @@ def ten_minutes_to_pandas():
     print(df["20180226":"20180228"], "\n", "--" * 20)
     """
 
-    """
     # DataFrame.loc: Purely label-location based indexer for selection by label.
+    print(df.loc[:, :], "\n", "--" * 20)    # OK
+    print(df.loc[:], "\n", "--" * 20)    # Output: identical to the output of last line.
+    # print(df.loc[, :], "\n", "--" * 20)    # NO
+    """
     print(df.loc[:, ["A", "E"]], "\n", "--" * 20)
     print(df.loc["20170226":"20170228", "B":"C"], "\n", "--" * 20)
     print(df.loc["20170226", "B"], "\n", "--" * 20)
@@ -336,7 +352,7 @@ def ten_minutes_to_pandas():
 
 
 if __name__ == "__main__":
-    # basic_demo()
+    basic_demo()
     # pandas_file()
     # pandas_index()
-    ten_minutes_to_pandas()
+    # ten_minutes_to_pandas()
