@@ -52,19 +52,51 @@ def draw_function():
                 y.append(-item * math.log2(item) - (1 - item) * math.log2(1 - item))
         return y
 
+    def sh(x):
+        # 双曲正弦函数
+        y = []
+        for item in x:
+            y.append((math.exp(item) - math.exp(-item)) / 2)
+        return y
+
+    def ch(x):
+        # 双曲余弦函数
+        y = []
+        for item in x:
+            y.append((math.exp(item) + math.exp(-item)) / 2)
+        return y
+
+    def x_cube_3(x):
+        y = []
+        for item in x:
+            y.append(item ** 3)
+        return y
+
 
     x = np.arange(-10, 10, 0.2)    # arange(起点, 终点, 间隔). linspace(起点, 终点, 点个数)
-    y = sigmoid(x)
-    plt.subplot(121)
+    # y = sigmoid(x)
+    y = x_cube_3(x)
+    plt.subplot(221)
     plt.plot(x, y)
 
     x = np.arange(0, 1, 0.01)    # arange(起点, 终点, 间隔). linspace(起点, 终点, 点个数)
     y = func(x)
-    plt.subplot(122)
+    plt.subplot(222)
     plt.plot(x, y)
+
+    x = np.arange(-10, 10, 0.2)    # arange(起点, 终点, 间隔). linspace(起点, 终点, 点个数)
+    y = sh(x)
+    plt.subplot(223)
+    plt.plot(x, y)
+
+    x = np.arange(-10, 10, 0.2)    # arange(起点, 终点, 间隔). linspace(起点, 终点, 点个数)
+    y = ch(x)
+    plt.subplot(224)
+    plt.plot(x, y)
+
     plt.show()
 
 
 if __name__ == "__main__":
-    basic_demo()
-    # draw_function()
+    # basic_demo()
+    draw_function()
