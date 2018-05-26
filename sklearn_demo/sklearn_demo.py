@@ -202,7 +202,7 @@ def models():
     model = neighbors.KNeighborsClassifier(n_neighbors=5, n_jobs=1)    # 分类
     model = neighbors.KNeighborsRegressor(n_neighbors=5, n_jobs=1)    # 回归
 
-    # 4.7 多层感知机（神经网络）
+    # 4.7 多层感知机(神经网络)
     from sklearn.neural_network import MLPClassifier
     # 定义多层感知机分类算法
     model = MLPClassifier(activation="relu", solver="adam", alpha=0.0001)
@@ -339,7 +339,7 @@ def models_1():
     from sklearn.neighbors import KNeighborsClassifier
     model = KNeighborsClassifier()
 
-    # 4.4 决策树: 分类与回归树(Classification and Regression Trees ,CART)算法常用于特征含有类别信息
+    # 4.4 决策树: 分类与回归树(Classification and Regression Trees, CART)算法常用于特征含有类别信息
     # 的分类或者回归问题，这种方法非常适用于多分类情况
     from sklearn.tree import DecisionTreeClassifier
     model = DecisionTreeClassifier()
@@ -427,7 +427,7 @@ if __name__ == "__main__":
     # feature_selection()
 
     # 2". 数据预处理
-    preprocess_data_1()
+    # preprocess_data_1()
 
     # 3. 数据集拆分: 将数据集划分为训练集和测试集/把训练数据集进一步拆分成训练集和验证集
     # data_split()
@@ -436,7 +436,7 @@ if __name__ == "__main__":
     # models()
 
     # 4'. 定义模型
-    # models_1()
+    models_1()
 
     # 7. 使用实例
     # demo()
