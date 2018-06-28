@@ -140,7 +140,7 @@ def classify(X, y, pre_data):
     Inverse of regularization strength; must be a positive float. Like in support vector machines, smaller
     values specify stronger regularization.
     """
-
+    
     # 2. NB: 也是著名的机器学习算法, 该方法的任务是还原训练样本数据的分布密度, 其在多分类中有很好的效果
     from sklearn import naive_bayes
     model = naive_bayes.GaussianNB()    # 高斯贝叶斯
@@ -148,17 +148,21 @@ def classify(X, y, pre_data):
     # 3. KNN:
     from sklearn.neighbors import KNeighborsClassifier
     model = KNeighborsClassifier()
+    '''
 
     # 4. 决策树: 分类与回归树(Classification and Regression Trees, CART)算法常用于特征含有类别信息
     # 的分类或者回归问题，这种方法非常适用于多分类情况
     from sklearn.tree import DecisionTreeClassifier
     model = DecisionTreeClassifier()
-    
+    # print(model.feature_importances_)
+    # model.feature_importances_必须在fit()之后才能调用，否则会有下面的错误
+    # sklearn.exceptions.NotFittedError: Estimator not fitted, call `fit` before `feature_importances_`.
+
+    '''
     # 5. SVM: SVM是非常流行的机器学习算法，主要用于分类问题，
     # 如同逻辑回归问题，它可以使用一对多的方法进行多类别的分类
     from sklearn.svm import SVC
     model = SVC()
-    '''
 
     # 6. MLP: 多层感知器(神经网络)
     from sklearn.neural_network import MLPClassifier
@@ -166,8 +170,10 @@ def classify(X, y, pre_data):
     # model = MLPClassifier(activation="identity", solver="adam", alpha=0.0001)
     # model = MLPClassifier(activation="logistic", solver="adam", alpha=0.0001)
     model = MLPClassifier(activation="tanh", solver="adam", alpha=0.0001)
+    '''
 
     model.fit(X, y)
+    print(model.feature_importances_)    # [0.66929226 0.33070774], 似乎只有决策树才有这个属性
     Z = model.predict(pre_data)
     return Z
 
